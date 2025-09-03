@@ -44,6 +44,7 @@ export default function Login({ setIsLoggedIn }) {
                 }
                 else{
                     alert("plaese register and continue")
+                    navigate('/register')
                 }
             })
             .catch((err) => console.log("error in front end fetvh login", err))
