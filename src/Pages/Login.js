@@ -39,8 +39,11 @@ export default function Login({ setIsLoggedIn }) {
                 if (data.users?.role === "admin") {
                     navigate('/adminviewpage')
                 }
-                else {
+                else if(data.users?.role==="user") {
                     navigate('/')
+                }
+                else{
+                    alert("plaese register and continue")
                 }
             })
             .catch((err) => console.log("error in front end fetvh login", err))
