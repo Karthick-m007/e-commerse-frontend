@@ -19,19 +19,19 @@ const navigate=useNavigate()
 
     const url = process.env.REACT_APP_BACKEND
     console.log(url)
-    useEffect(() => {
-        fetch(`${url}get-product`, {
-            method: "GET",
-            credentials: 'include'
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                setGetdata(data.product)
-                console.log(getdata)
+     useEffect(() => {
+            fetch(`${url}get-product`, {
+                method: "GET",
+                credentials: 'include'
             })
-            .catch(err => console.log("error in the getti data frndend", err))
-    }, [])
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    setGetdata(data.product)
+                    console.log(getdata)
+                })
+                .catch(err => console.log("error in the getti data frndend", err))
+        }, [])
     return (
         <div>
             {/* <Navbar/> */}
@@ -40,11 +40,8 @@ const navigate=useNavigate()
                 {
                     getdata.length === 0 ? (<span>loading...</span>) : (getdata && getdata.map((g, index) => (
                         <div className="card" style={{ width: "18rem" }} key={g.product_id}>
-                            <img
-                                src={`${url}uploads/${g.image?.filepath}`.replace(/([^:]\/)\/+/g, '$1')}
-                                className="card-img-top"
-                                alt={g.product_name}
-                            />
+                            <img src={`${url}uploads/${g.image?.filename}`} className="card-img-top" alt={g.product_name} />
+
                             <div className="card-body">
                                 <h5 className="card-title">{g.product_name}</h5>
                                 <p className="card-text">{g.product_description}</p>
