@@ -20,7 +20,7 @@ const navigate=useNavigate()
     const url = process.env.REACT_APP_BACKEND
     console.log(url)
     useEffect(() => {
-        fetch(`${url}get-product`, {
+        fetch(`${url}/get-product`, {
             method: "GET",
             credentials: 'include'
         })
