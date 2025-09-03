@@ -35,16 +35,18 @@ export default function Login({ setIsLoggedIn }) {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                setIsLoggedIn(true)
-                if (data.users?.role === "admin") {
-                    navigate('/adminviewpage')
-                }
-                else if(data.users?.role==="user") {
-                    navigate('/')
-                }
-                else{
-                    alert("plaese register and continue")
-                    navigate('/register')
+                if (data.success) {
+                    setIsLoggedIn(true);
+
+                    if (data.users?.role === "admin") {
+                        navigate('/adminviewpage');
+                    } else if (data.users?.role === "user") {
+                        navigate('/');
+                    }
+                } else {
+                    alert(data.message || "Please register and continue");
+                    setIsLoggedIn(false);
+                    navigate('/register');
                 }
             })
             .catch((err) => console.log("error in front end fetvh login", err))
