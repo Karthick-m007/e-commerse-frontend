@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = ({ setIsLoggedIn, isLoggedIn, setAddtocart }) => {
     const url = process.env.REACT_APP_BACKEND;
     const navigate = useNavigate();
-    const [menuOpen, setMenuOpen] = useState(false)
 
     useEffect(() => {
         fetch(`${url}check-auth`, {
@@ -33,58 +32,33 @@ const Navbar = ({ setIsLoggedIn, isLoggedIn, setAddtocart }) => {
             });
     };
 
-    const toggleMenu = () => setMenuOpen(!menuOpen);
-
     return (
-        <nav className="bg-white shadow-md px-4 py-3">
-            <div className="container mx-auto flex items-center justify-between">
+        <nav className="bg-white shadow-md p-4">
+            <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
                 {/* Logo */}
-                <Link to="/" className="text-xl font-bold text-blue-600">
+                <Link to="/" className="text-xl font-bold text-blue-600 mb-2 md:mb-0">
                     MyShop
                 </Link>
 
-                {/* Hamburger Menu (Mobile) */}
-                <div className="md:hidden">
-                    <button
-                        onClick={toggleMenu}
-                        className="text-gray-800 focus:outline-none"
-                    >
-                        <svg
-                            className="w-6 h-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d={menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
-                            />
-                        </svg>
-                    </button>
-                </div>
-
-                {/* Menu Items */}
-                <div className={`md:flex md:space-x-4 ${menuOpen ? 'block' : 'hidden'} md:block`}>
-                    <Link to="/" className="block mt-2 md:mt-0 text-gray-700 hover:text-blue-600">
+                {/* Navigation Links */}
+                <div className="flex flex-col md:flex-row gap-4 text-center">
+                    <Link to="/" className="text-gray-700 hover:text-blue-600">
                         Home
                     </Link>
-                    <Link to="/products" className="block mt-2 md:mt-0 text-gray-700 hover:text-blue-600">
+                    <Link to="/products" className="text-gray-700 hover:text-blue-600">
                         Products
                     </Link>
-                    <Link to="/cartpage" className="block mt-2 md:mt-0 text-gray-700 hover:text-blue-600">
+                    <Link to="/cartpage" className="text-gray-700 hover:text-blue-600">
                         Cart
                     </Link>
                     {!isLoggedIn ? (
-                        <Link to="/login" className="block mt-2 md:mt-0 text-gray-700 hover:text-blue-600">
+                        <Link to="/login" className="text-gray-700 hover:text-blue-600">
                             Login
                         </Link>
                     ) : (
                         <button
                             onClick={handleLogout}
-                            className="block mt-2 md:mt-0 text-gray-700 hover:text-blue-600 bg-transparent border-none"
+                            className="text-gray-700 hover:text-blue-600 bg-transparent border-none"
                         >
                             Logout
                         </button>
