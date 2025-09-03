@@ -41,7 +41,9 @@ export default function Adminviewpage() {
 
     return (
         <div>
-          
+            <button className='btn btn-info' onClick={() => navigate('/createproduct')} >
+            Add New Product
+          </button>
             <div className='flex justify-content-evenly mt-10'>
 
                 {

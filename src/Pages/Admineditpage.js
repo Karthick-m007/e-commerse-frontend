@@ -98,6 +98,9 @@ export default function Admineditpage() {
 
         <div>
             {/* <Navbar /> */}
+            <button className='btn btn-info mx-5 mt-6' onClick={() => navigate('/createproduct')} >
+                Add New Product
+            </button>
             <div className='flex items-center justify-center h-screen'>
 
                 <form action="" className='border p-6' onSubmit={handlesubmit}>

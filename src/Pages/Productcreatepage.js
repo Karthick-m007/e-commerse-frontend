@@ -61,105 +61,111 @@ export default function Productcreatepage() {
             .catch(err => console.log("error in the create product fetch", err))
     }
     return (
-        <div className='flex items-center justify-center h-screen'>
+        <div>
 
-            <form action="" className='border p-6' onSubmit={handlesubmit}>
-                <h1 className='text-2xl text-center p-4'>Create New     Product</h1>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <label htmlFor="productname" className='my-3 text-xl'>
-                                    Product Name:
-                                </label>
-                            </td>
+            <button className='btn btn-primary mx-10 mt-10 mb-0' onClick={() => navigate('/adminedit')}>
+                Back
+            </button>
+            <div className='flex items-center justify-center h-screen'>
 
-                            <td>
-                                <input type="text"
-                                    className='border border-black p-1 my-2 rounded rounded-1'
-                                    value={productcreate.productname}
-                                    name='productname'
-                                    onChange={handlechange}
-                                />
-                            </td>
-                        </tr>
+                <form action="" className='border p-6' onSubmit={handlesubmit}>
+                    <h1 className='text-2xl text-center p-4'>Create New     Product</h1>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label htmlFor="productname" className='my-3 text-xl'>
+                                        Product Name:
+                                    </label>
+                                </td>
 
-                        <tr>
-                            <td>
-                                <label htmlFor="productdescription" className='my-3 text-xl'>
-                                    Product Description:
-                                </label>
-                            </td>
+                                <td>
+                                    <input type="text"
+                                        className='border border-black p-1 my-2 rounded rounded-1'
+                                        value={productcreate.productname}
+                                        name='productname'
+                                        onChange={handlechange}
+                                    />
+                                </td>
+                            </tr>
 
-                            <td>
-                                <input type="text"
-                                    className='border border-black p-1 my-2 rounded rounded-1'
-                                    value={productcreate.productdescription}
-                                    name='productdescription'
-                                    onChange={handlechange}
-                                />
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    <label htmlFor="productdescription" className='my-3 text-xl'>
+                                        Product Description:
+                                    </label>
+                                </td>
 
-                        <tr>
-                            <td>
-                                <label htmlFor="productprice" className='my-3 text-xl'>
-                                    Product Price:
-                                </label>
-                            </td>
+                                <td>
+                                    <input type="text"
+                                        className='border border-black p-1 my-2 rounded rounded-1'
+                                        value={productcreate.productdescription}
+                                        name='productdescription'
+                                        onChange={handlechange}
+                                    />
+                                </td>
+                            </tr>
 
-                            <td>
-                                <input type="number"
-                                    className='border border-black p-1 my-2 rounded rounded-1'
-                                    value={productcreate.productprice}
-                                    name='productprice'
-                                    onChange={handlechange}
-                                />
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    <label htmlFor="productprice" className='my-3 text-xl'>
+                                        Product Price:
+                                    </label>
+                                </td>
 
-                        <tr>
-                            <td>
-                                <label htmlFor="stock" className='my-3 text-xl'>
-                                    Stock:
-                                </label>
-                            </td>
+                                <td>
+                                    <input type="number"
+                                        className='border border-black p-1 my-2 rounded rounded-1'
+                                        value={productcreate.productprice}
+                                        name='productprice'
+                                        onChange={handlechange}
+                                    />
+                                </td>
+                            </tr>
 
-                            <td>
-                                <input type="number"
+                            <tr>
+                                <td>
+                                    <label htmlFor="stock" className='my-3 text-xl'>
+                                        Stock:
+                                    </label>
+                                </td>
 
-                                    className='border border-black p-1 my-2 rounded rounded-1'
-                                    value={productcreate.stock}
-                                    name='stock'
-                                    onChange={handlechange}
-                                />
-                            </td>
-                        </tr>
+                                <td>
+                                    <input type="number"
 
-                        <tr>
-                            <td>
-                                <label htmlFor="image" className='my-3 text-xl'>
-                                    Product Image:
-                                </label>
-                            </td>
+                                        className='border border-black p-1 my-2 rounded rounded-1'
+                                        value={productcreate.stock}
+                                        name='stock'
+                                        onChange={handlechange}
+                                    />
+                                </td>
+                            </tr>
 
-                            <td>
-                                <input type="file"
-                                    className='border w-48 p-1 border-black rounded-1'
-                                    name='image'
-                                    accept='image/*'
-                                    onChange={handlechange}
-                                />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div className='flex justify-content-center my-3'>
-                    <button className=' btn btn-primary' onClick={(() => navigate('/adminviewpage'))}>
-                        Add Product
-                    </button>
-                </div>
-            </form>
+                            <tr>
+                                <td>
+                                    <label htmlFor="image" className='my-3 text-xl'>
+                                        Product Image:
+                                    </label>
+                                </td>
+
+                                <td>
+                                    <input type="file"
+                                        className='border w-48 p-1 border-black rounded-1'
+                                        name='image'
+                                        accept='image/*'
+                                        onChange={handlechange}
+                                    />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div className='flex justify-content-center my-3'>
+                        <button className=' btn btn-primary' onClick={(() => navigate('/adminviewpage'))}>
+                            Add Product
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }

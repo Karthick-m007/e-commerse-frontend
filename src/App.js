@@ -25,6 +25,7 @@ function App() {
         <Route path='/createproduct' element={<Productcreatepage />} />
         <Route path='/adminviewpage' element={<Adminviewpage />} />
         <Route path='/adminedit/:product_id' element={<Admineditpage />} />
+        <Route path='/adminedit' element={<Admineditpage />} />
         <Route path='/cartpage' element={<CartView addtocart={addtocart} />} />
 
       </Routes>
