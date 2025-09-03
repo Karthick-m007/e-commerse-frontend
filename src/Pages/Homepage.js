@@ -41,7 +41,7 @@ const navigate=useNavigate()
                     getdata.length === 0 ? (<span>loading...</span>) : (getdata && getdata.map((g, index) => (
                         <div className="card" style={{ width: "18rem" }} key={g.product_id}>
                             <img
-                                src={`${url}/${g.image?.filepath}`.replace(/([^:]\/)\/+/g, '$1')}
+                                src={`${url}uploads/${g.image?.filepath}`.replace(/([^:]\/)\/+/g, '$1')}
                                 className="card-img-top"
                                 alt={g.product_name}
                             />
