@@ -40,7 +40,7 @@ const navigate=useNavigate()
                 {
                     getdata.length === 0 ? (<span>loading...</span>) : (getdata && getdata.map((g, index) => (
                         <div className="card" style={{ width: "18rem" }} key={g.product_id}>
-                            <img src={`${url}uploads/${g.image?.filename}`} className="card-img-top" alt={g.product_name} />
+                            <img src={`${url}uploads/${g.image?.filepath}`} className="card-img-top" alt={g.product_name} />
                             <div className="card-body">
                                 <h5 className="card-title">{g.product_name}</h5>
                                 <p className="card-text">{g.product_description}</p>
