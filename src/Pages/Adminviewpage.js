@@ -42,14 +42,14 @@ export default function Adminviewpage() {
     return (
         <div>
             <button className='btn btn-info' onClick={() => navigate('/createproduct')} >
-            Add New Product
-          </button>
+                Add New Product
+            </button>
             <div className='flex justify-content-evenly mt-10'>
 
                 {
                     getdata.length === 0 ? (<span>loading...</span>) : (getdata && getdata.map((g, index) => (
                         <div className="card" style={{ width: "18rem" }} key={g.product_id}>
-                            <img src={`${url}uploads/${g.image?.filename}`} className="card-img-top" alt={g.product_name} />
+                            <img src={`${url}${g.image?.filepath}`} className="card-img-top" alt={g.product_name} />
                             <div className="card-body">
                                 <h5 className="card-title">{g.product_name}</h5>
                                 <p className="card-text">{g.product_description}</p>

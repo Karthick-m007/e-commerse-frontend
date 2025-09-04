@@ -1,20 +1,53 @@
-import React from 'react';
+import { useEffect, useState } from "react";
 
-export default function CartPage({ addtocart }) {
+const CartPage = ({ setIsLoggedIn }) => {
+    const [orders, setOrders] = useState([]);
+    const url = process.env.REACT_APP_BACKEND;
+
+    useEffect(() => {
+        fetch(`${url}placed-orders`, {
+            method: "GET",
+            credentials: "include",
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.success) {
+                    // Filter out orders where product_id is null
+                    const validOrders = data.orders.filter(order => order.item?.product_id);
+                    setIsLoggedIn(true)
+                    setOrders(validOrders);
+                } else {
+                    alert("Failed to load cart");
+                }
+            });
+    }, [url]);
+
     return (
-        <div className="p-4">
-            <h2 className="text-xl font-bold mb-4">Your Cart</h2>
-            {addtocart.length === 0 ? (
-                <p>No items in cart.</p>
+        <div>
+            <h2>Your Cart</h2>
+            {orders.length === 0 ? (
+                <p>No orders placed yet.</p>
             ) : (
-                addtocart.map((item, index) => (
-                    <div key={index} className="border p-2 mb-2">
-                        <h3>{item.product_name}</h3>
-                        <p>{item.product_description}</p>
-                        <strong>₹{item.product_price}</strong>
-                    </div>
-                ))
+                orders.map((order, index) => {
+                    const product = order.item.product_id;
+                    return (
+                        <div key={index} style={{ border: '1px solid #ccc', padding: '10px', margin: '10px 0' }}>
+                            <h4>{product.product_name}</h4>
+                            <p>Price: ₹{product.product_price}</p>
+                            <p>Quantity: {order.item.quantity}</p>
+                            <p>Total: ₹{order.total_amount}</p>
+                            <img
+                                src={`${url}${product.image?.filepath}`}
+                                alt={product.product_name}
+                                width="100"
+                                onError={(e) => e.target.style.display = 'none'}
+                            />
+                        </div>
+                    );
+                })
             )}
         </div>
     );
-}
+};
+
+export default CartPage;
