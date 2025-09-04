@@ -5,7 +5,7 @@ const CartPage = ({ setIsLoggedIn }) => {
     const url = process.env.REACT_APP_BACKEND;
 
     useEffect(() => {
-        fetch(`${url}placed-orders`, {
+        fetch(`${url}cart/placed-orders`, {
             method: "GET",
             credentials: "include",
         })

@@ -36,7 +36,7 @@ export default function Homepage({ addtocart, setAddtocart, isLoggedIn }) {
     // Example in React (ProductCard.jsx or similar)
 
     const handleAddToCart = async (product) => {
-        const res = await fetch(`${url}place-order`, {
+        const res = await fetch(`${url}cart/place-order`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             credentials: "include",
