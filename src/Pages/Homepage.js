@@ -36,7 +36,7 @@ export default function Homepage({ addtocart, setAddtocart, isLoggedIn }) {
     // Example in React (ProductCard.jsx or similar)
 
     const handleAddToCart = async (product) => {
-        const res = await fetch(`${url}cart/place-order`, {
+        const res = await fetch(`${url}place-order`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             credentials: "include",
@@ -46,7 +46,7 @@ export default function Homepage({ addtocart, setAddtocart, isLoggedIn }) {
         const data = await res.json();
 
         if (data.success) {
-           
+
             window.location.href = "/cartpage";
         } else {
             alert("Error placing order: " + data.message);
@@ -62,7 +62,7 @@ export default function Homepage({ addtocart, setAddtocart, isLoggedIn }) {
                     getdata.length === 0 ? (<span>loading...</span>) : (getdata && getdata.map((g, index) => (
                         <div className="card" style={{ width: "18rem" }} key={g.product_id}>
                             <img src={`${url}${g.image?.filepath}`} className="card-img-top" alt={g.product_name} />
-                            {console.log("image link", `${ url }${ g.image?.filepath }`)}
+                            {console.log("image link", `${url}${g.image?.filepath}`)}
                             <div className="card-body">
                                 <h5 className="card-title">{g.product_name}</h5>
                                 <p className="card-text">{g.product_description}</p>
